@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import AlunoService from '../services/AlunoService';
 
 const CreateAluno = () => {
@@ -9,7 +10,7 @@ const CreateAluno = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await AlunoService.create({ nome, curso, ira });
+            await axios.post('http://localhost:6565/alunos', { nome, curso, IRA:ira });
             alert('Aluno criado com sucesso!');
         } catch (error) {
             console.error('Erro ao criar aluno:', error);

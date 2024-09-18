@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/alunos'; // Ajuste o URL conforme necessário
+const API_URL = 'http://localhost:6565/alunos';
 
 const AlunoService = {
     create: async (aluno) => {
@@ -30,18 +30,9 @@ const AlunoService = {
             throw error;
         }
     },
-    deleteByName: async (nome) => {
-        try {
-            const response = await axios.delete(`${API_URL}/nome/${nome}`);
-            return response.data;
-        } catch (error) {
-            console.error('Erro ao remover aluno pelo nome:', error);
-            throw error;
-        }
-    },
     getAll: async () => {
         try {
-            const response = await axios.get(API_URL);
+            const response = await axios.get("http://localhost:6565");
             return response.data;
         } catch (error) {
             console.error('Erro ao listar alunos:', error);

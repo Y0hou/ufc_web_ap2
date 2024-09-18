@@ -11,7 +11,7 @@ const EditAluno = () => {
     useEffect(() => {
         const fetchAluno = async () => {
             try {
-                const response = await AlunoService.getById(id); // Chamada específica para buscar o aluno pelo ID
+                const response = await AlunoService.getById(id); 
                 setNome(response.data.nome);
                 setCurso(response.data.curso);
                 setIra(response.data.ira);

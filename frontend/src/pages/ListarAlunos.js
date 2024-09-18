@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import AlunoService from '../services/AlunoService';
 
 const ListarAlunos = () => {
@@ -9,9 +10,10 @@ const ListarAlunos = () => {
     useEffect(() => {
         const fetchAlunos = async () => {
             try {
-                const response = await AlunoService.getAll();
-                setAlunos(response.data);
-                calcularMediaIra(response.data);
+                const response = await axios.get('http://localhost:6565/alunos');
+                console.log('Alunos:', response.data);
+                setAlunos(response.data || []);
+                calcularMediaIra(response.data || []);
             } catch (error) {
                 console.error('Erro ao listar alunos:', error);
             }
@@ -21,7 +23,7 @@ const ListarAlunos = () => {
 
     const calcularMediaIra = (alunos) => {
         if (alunos.length > 0) {
-            const somaIra = alunos.reduce((acc, aluno) => acc + aluno.ira, 0);
+            const somaIra = alunos.reduce((acc, aluno) => acc + aluno.IRA   , 0);
             const media = somaIra / alunos.length;
             setMediaIra(media);
         }
@@ -55,10 +57,10 @@ const ListarAlunos = () => {
                 </thead>
                 <tbody>
                     {alunos.map(aluno => (
-                        <tr key={aluno.id} style={getRowStyle(aluno.ira)}>
+                        <tr key={aluno.id} style={getRowStyle(aluno.IRA)}>
                             <td>{aluno.nome}</td>
                             <td>{aluno.curso}</td>
-                            <td>{aluno.ira}</td>
+                            <td>{aluno.IRA}</td>
                         </tr>
                     ))}
                     <tr style={{ backgroundColor: '#f0f0f0', fontWeight: 'bold' }}>

@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const cors = require('cors');
 
 //importando os arquivos de rotas
 var indexRouter = require('./routes/index');
@@ -17,7 +18,10 @@ mongoose.connect(mongoURI).then(() => {
 });
 
 var app = express();
-
+app.use(cors({
+    origin: 'http://localhost:3000' // Substitua pela URL do seu frontend
+  }));
+  
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -38,4 +42,6 @@ app.use('/alunos', alunosRouter)
 
 //BROWSER <=> app.js -> alunos.js -> ProfessorService.js -> ProfessorModel.js
 
-module.exports = app;
+app.listen(6565, () => {
+    console.log('Servidor iniciado na porta 6565');
+})

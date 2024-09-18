@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import AlunoService from '../services/AlunoService';
 
 const ListarPorCurso = () => {
@@ -9,7 +10,7 @@ const ListarPorCurso = () => {
     useEffect(() => {
         const fetchAlunos = async () => {
             try {
-                const response = await AlunoService.getAll();
+                const response = await axios.get('http://localhost:6565/alunos');
                 setAlunos(response.data);
                 agruparPorCurso(response.data);
             } catch (error) {
@@ -35,7 +36,7 @@ const ListarPorCurso = () => {
     };
 
     const getRowStyle = (ira) => {
-        if (destacar && ira > 7) {
+        if (destacar && ira >= 7) {
             return {
                 backgroundColor: 'green',
                 color: 'white'
@@ -53,22 +54,12 @@ const ListarPorCurso = () => {
             {Object.keys(alunosPorCurso).map(curso => (
                 <div key={curso}>
                     <h3>{curso}</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>IRA</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {alunosPorCurso[curso].map(aluno => (
-                                <tr key={aluno.id} style={getRowStyle(aluno.ira)}>
-                                    <td>{aluno.nome}</td>
-                                    <td>{aluno.ira}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                    {alunosPorCurso[curso].map(aluno => (
+                        <div key={aluno.id} style={getRowStyle(aluno.IRA)}>
+                            <p>{aluno.nome}</p>
+                            <p>IRA: {aluno.IRA}</p>
+                        </div>
+                    ))}
                 </div>
             ))}
         </div>

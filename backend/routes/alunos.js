@@ -8,7 +8,9 @@ const { response } = require('express');
 router.get(
     "/",
     async (request,response,next) => {
-        response.json(await AlunoService.listar())
+        const list = await AlunoService.listar()
+        console.log(list)
+        response.status(200).json(list)
     }
 )
 
