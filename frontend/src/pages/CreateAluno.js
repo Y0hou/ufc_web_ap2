@@ -19,7 +19,7 @@ const CreateAluno = () => {
         <div>
             <h2>Criar Aluno</h2>
             <form onSubmit={handleSubmit}>
-                <input
+                <input 
                     type="text"
                     value={nome}
                     onChange={(e) => setNome(e.target.value)}

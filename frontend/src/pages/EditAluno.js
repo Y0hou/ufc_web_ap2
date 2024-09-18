@@ -16,7 +16,7 @@ const EditAluno = () => {
             } catch (error) {
                 console.error('Erro ao buscar aluno:', error);
             }
-        };
+        }; 
         fetchAluno();
     }, [id]);
 

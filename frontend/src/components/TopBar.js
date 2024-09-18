@@ -14,7 +14,7 @@ const TopBar = () => {
                 </select>
             </nav>
         </div>
-    );
+    ); 
 };
 
 export default TopBar;

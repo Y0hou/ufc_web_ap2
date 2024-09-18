@@ -15,7 +15,7 @@ const RemoveAluno = () => {
         }
     };
 
-    return (
+    return ( 
         <div>
             <h2>Remover Aluno</h2>
             <form onSubmit={handleSubmit}>

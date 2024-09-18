@@ -16,7 +16,7 @@ const ListarAlunos = () => {
         };
         fetchAlunos();
     }, []);
-
+ 
     return (
         <div>
             <h2>Listar Alunos</h2>
