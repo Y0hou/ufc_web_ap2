@@ -17,6 +17,7 @@ const TopBar = () => {
                     <option value="/edit">Editar Aluno</option>
                     <option value="/remove">Remover Aluno</option>
                     <option value="/list">Listar Alunos</option>
+                    <option value="/list-by-course">Listar por Curso</option>
                 </select>
             </nav>
         </div>

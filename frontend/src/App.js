@@ -5,6 +5,7 @@ import CreateAluno from './pages/CreateAluno';
 import EditAluno from './pages/EditAluno';
 import RemoveAluno from './pages/RemoveAluno';
 import ListarAlunos from './pages/ListarAlunos';
+import ListarPorCurso from './pages/ListarPorCurso';
 
 const App = () => {
     return (
@@ -16,6 +17,7 @@ const App = () => {
                     <Route path="/edit/:id" element={<EditAluno />} /> 
                     <Route path="/remove" element={<RemoveAluno />} />
                     <Route path="/list" element={<ListarAlunos />} />
+                    <Route path="/list-by-course" element={<ListarPorCurso />} />
                 </Routes>
             </div>
         </div>
