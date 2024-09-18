@@ -1,0 +1,20 @@
+/* src/App.css */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #282c34;
+    color: white;
+}
+
+.top-bar h1 {
+    margin: 0;
+}
+
+.top-bar nav select {
+    padding: 5px;
+}
+
+.content {
+    padding: 20px;
+}
