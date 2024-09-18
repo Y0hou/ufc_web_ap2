@@ -1,0 +1,41 @@
+.tabela-alunos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.tabela-alunos th, .tabela-alunos td {
+    border: 1px solid #000000;
+    padding: 8px;
+    text-align: left;
+}
+
+.tabela-alunos th {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+}
+
+.tabela-alunos tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.tabela-alunos tr:hover {
+    background-color: #ddd;
+}
+
+.destacado {
+    background-color: green;
+    color: white;
+}
+
+button {
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4CAF50;
+    color: white;
+}

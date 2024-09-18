@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import AlunoService from '../services/AlunoService';
+import './ListarPorCurso.css'; // Importando o CSS
 
 const ListarPorCurso = () => {
     const [alunos, setAlunos] = useState([]);
@@ -37,12 +38,9 @@ const ListarPorCurso = () => {
 
     const getRowStyle = (ira) => {
         if (destacar && ira >= 7) {
-            return {
-                backgroundColor: 'green',
-                color: 'white'
-            };
+            return 'destacado'; // Estilo condicional
         }
-        return {};
+        return '';
     };
 
     return (
@@ -54,12 +52,22 @@ const ListarPorCurso = () => {
             {Object.keys(alunosPorCurso).map(curso => (
                 <div key={curso}>
                     <h3>{curso}</h3>
-                    {alunosPorCurso[curso].map(aluno => (
-                        <div key={aluno.id} style={getRowStyle(aluno.IRA)}>
-                            <p>{aluno.nome}</p>
-                            <p>IRA: {aluno.IRA}</p>
-                        </div>
-                    ))}
+                    <table className="tabela-alunos">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>IRA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {alunosPorCurso[curso].map(aluno => (
+                                <tr key={aluno.id} className={getRowStyle(aluno.IRA)}>
+                                    <td>{aluno.nome}</td>
+                                    <td>{aluno.IRA}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             ))}
         </div>
