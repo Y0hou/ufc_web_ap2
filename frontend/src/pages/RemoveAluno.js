@@ -1,17 +1,24 @@
-// src/pages/RemoveAluno.js
 import React, { useState } from 'react';
 import AlunoService from '../services/AlunoService';
 
 const RemoveAluno = () => {
-    const [id, setId] = useState('');
+    const [nome, setNome] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await AlunoService.delete(id);
+            await AlunoService.deleteByName(nome);
             alert('Aluno removido com sucesso!');
         } catch (error) {
             console.error('Erro ao remover aluno:', error);
+        }
+    };
+
+    const handleNomeChange = (e) => {
+        try {
+            setNome(e.target.value);
+        } catch (error) {
+            console.error('Erro ao atualizar nome:', error);
         }
     };
 
@@ -21,9 +28,10 @@ const RemoveAluno = () => {
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
-                    value={id}
-                    onChange={(e) => setId(e.target.value)}
-                    placeholder="ID do Aluno"
+                    value={nome}
+                    onChange={handleNomeChange}
+                    placeholder="Nome do Aluno"
+                    aria-label="Nome do Aluno"
                     required
                 />
                 <button type="submit">Remover</button>

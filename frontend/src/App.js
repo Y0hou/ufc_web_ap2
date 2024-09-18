@@ -10,7 +10,7 @@ const App = () => {
     return (
         <div>
             <TopBar />
-            <div className="content">
+            <div className="content" aria-label="Conteúdo Principal">
                 <Routes>
                     <Route path="/create" element={<CreateAluno />} />
                     <Route path="/edit/:id" element={<EditAluno />} /> 

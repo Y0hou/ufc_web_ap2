@@ -1,4 +1,3 @@
-// src/pages/ListarAlunos.js
 import React, { useState, useEffect } from 'react';
 import AlunoService from '../services/AlunoService';
 
@@ -16,11 +15,11 @@ const ListarAlunos = () => {
         };
         fetchAlunos();
     }, []);
- 
+
     return (
         <div>
             <h2>Listar Alunos</h2>
-            <ul>
+            <ul aria-label="Lista de Alunos">
                 {alunos.map(aluno => (
                     <li key={aluno.id}>{aluno.nome}</li>
                 ))}

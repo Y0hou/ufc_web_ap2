@@ -1,4 +1,3 @@
-// src/pages/EditAluno.js
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import AlunoService from '../services/AlunoService';
@@ -10,9 +9,8 @@ const EditAluno = () => {
     useEffect(() => {
         const fetchAluno = async () => {
             try {
-                const response = await AlunoService.getAll(); // Substitua por uma chamada específica se necessário
-                const aluno = response.data.find(aluno => aluno.id === id);
-                setNome(aluno.nome);
+                const response = await AlunoService.getById(id); // Chamada específica para buscar o aluno pelo ID
+                setNome(response.data.nome);
             } catch (error) {
                 console.error('Erro ao buscar aluno:', error);
             }
@@ -30,6 +28,14 @@ const EditAluno = () => {
         }
     };
 
+    const handleNomeChange = (e) => {
+        try {
+            setNome(e.target.value);
+        } catch (error) {
+            console.error('Erro ao atualizar nome:', error);
+        }
+    };
+
     return (
         <div>
             <h2>Editar Aluno</h2>
@@ -37,8 +43,9 @@ const EditAluno = () => {
                 <input
                     type="text"
                     value={nome}
-                    onChange={(e) => setNome(e.target.value)}
+                    onChange={handleNomeChange}
                     placeholder="Nome do Aluno"
+                    aria-label="Nome do Aluno"
                     required
                 />
                 <button type="submit">Atualizar</button>
